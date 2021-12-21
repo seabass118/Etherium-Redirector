@@ -3,8 +3,8 @@ const url = 'Etherium Node Connection Link (can use local node)';
 
 const web3 = new Web3(url); 
 
-const addressFrom = {privateKey: '589416540c57f6d4361ffcee81c08f112a7e70081c6bbe0f1a8e131460e2fb93', address: '0x7fd43706D706c449a8e43028DAe20c2Bf3b3145C',};
-const addressTo = '0xBADF63776aA9542A488BfD016cE24d848abcFB08';
+const addressFrom = {privateKey: 'ENTER PRIVATE KEY', address: 'ENTER ADDRESS',};
+const addressTo = 'ENTER ADDRESS TO SEND ETH TO';
 
 const balances = async () => {
    const balanceFrom = web3.utils.fromWei(
