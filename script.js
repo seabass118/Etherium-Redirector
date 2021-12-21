@@ -1,5 +1,5 @@
 const Web3 = require('web3');
-const url = 'https://eth-mainnet.alchemyapi.io/v2/kuPhU5I1pSxiala8IUB6T-eikVyUJoA1';
+const url = 'Etherium Node Connection Link (can use local node)';
 
 const web3 = new Web3(url); 
 
