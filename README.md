@@ -1,4 +1,4 @@
-# etherium-redirector
+# Ethereum-Redirector
 Automaticallly sends Ethereum to a hardcoded address when sent to the re-direction address.
 
 ## How does it work ?
