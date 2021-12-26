@@ -1,24 +1,27 @@
 const Web3 = require('web3');
-const url = 'Etherium Node Connection Link (can use local node)';
+const url = 'Network Link (Alchemy is a good service to use)';
 
 const web3 = new Web3(url); 
 
-const addressFrom = {privateKey: 'ENTER PRIVATE KEY', address: 'ENTER ADDRESS',};
-const addressTo = 'ENTER ADDRESS TO SEND ETH TO';
+const addressFrom = {privateKey: 'PRIVATE KEY', address: '0x... ADDRESS',};
+const addressTo = '0x... ADDRESS';
 
 const balances = async () => {
+
    const balanceFrom = web3.utils.fromWei(
       await web3.eth.getBalance(addressFrom.address),
       'ether'
    );
 
-   const floatBalance = parseFloat(balanceFrom);
-   const x = floatBalance * 1000000000000000000;
-   const y = Math.floor(x);
-   const z = y - 0.004 * 100000000000000000;
+   const balance_eth_number = parseFloat(balanceFrom);
+   const balance_wei_string = web3.utils.toWei(balanceFrom);
+   const balance_wei_number = parseInt(balance_wei_string);
+   const withdraw_ammount = Math.round(balance_wei_number / 100 * 75);
+   
+   console.log(`Eth Balance: ${balance_eth_number}`);
 
-   if(floatBalance >= 0.005) {
-      
+   if(balance_eth_number >= 0.004) {
+
       console.log(
          `Attempting to send transaction from ${addressFrom.address} to ${addressTo}`
       );
@@ -27,7 +30,7 @@ const balances = async () => {
          {
             gas: 21000,
             to: addressTo,
-            value: z,
+            value: withdraw_ammount,
          },
          addressFrom.privateKey
       );
@@ -39,7 +42,7 @@ const balances = async () => {
          `Transaction successful with hash: ${createReceipt.transactionHash}`
       );
    } else {
-      console.log('balance chilling');
+      console.log('Scanning Wallet...');
    }
    setTimeout(balances, 1000);
 };
